@@ -20,7 +20,11 @@
 #  fk_rails_...  (owner_id => users.id)
 #
 class Photo < ApplicationRecord
+  #Direct Association
   belongs_to :owner, class_name: "User", counter_cache: true
   has_many :comments
   has_many :likes
+
+  #Indirect Association
+  has_many :fans, through: :likes
 end
