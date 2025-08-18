@@ -44,6 +44,13 @@ class User < ApplicationRecord
   #Scoped Indirect Associations
   has_many :accepted_sent_follow_requests, -> { accepted }, foreign_key: :sender_id, class_name: "FollowRequest"
   has_many :accepted_received_follow_requests, -> { accepted }, foreign_key: :recipient_id, class_name: "FollowRequest"
+  
+  has_many :pending_sent_follow_requests, -> { pending }, foreign_key: :sender_id, class_name: "FollowRequest"
+  has_many :pending_received_follow_requests, -> { pending }, foreign_key: :recipient_id, class_name: "FollowRequest"
+
+  has_many :rejected_sent_follow_requests, -> { rejected }, foreign_key: :sender_id, class_name: "FollowRequest"
+  has_many :rejected_received_follow_requests, -> { rejected }, foreign_key: :recipient_id, class_name: "FollowRequest"
+  
 
   #Indirect Associations
   has_many :liked_photos, through: :likes, source: :photo
